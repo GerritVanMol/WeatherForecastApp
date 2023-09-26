@@ -1,5 +1,20 @@
 ﻿@page "/"
 @inherits IndexBase
-<PageTitle>Home</PageTitle>
 
-<h1>Hello world</h1>
+
+<h1>Climate in Hasselt</h1>
+<div>
+    <p>
+        Last updated:<b>@updateTime <sup style="font-size: 12px;">update frequency 1/day (24h)</sup></b
+    </p>
+</div>
+@if (viewModel.ClimateData != null)
+{
+    <p>Last recoreded Temperature: <b>@viewModel.ClimateData.Hourly.TemperatureTwoM.LastOrDefault() °C</b>
+        <br>
+        Last recoreded Wind Speed: <b>@viewModel.ClimateData.Hourly.WindSpeedTenM.LastOrDefault() km/h</b>
+        <br>
+        Last recoreded Humidity: <b>@viewModel.ClimateData.Hourly.RelativeHumidityTwoM.LastOrDefault() %</b>
+    </p>
+}
+
