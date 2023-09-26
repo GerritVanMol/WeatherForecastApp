@@ -16,8 +16,7 @@
         Last recoreded Humidity: <b>@viewModel.ClimateData.Hourly.RelativeHumidityTwoM.LastOrDefault() %</b>
     </p>
 }
-
-<button @onclick="DownloadFile">Download CSV</button>
+<button type="button" @onclick="DownloadFile" class="btn btn-info">Download CSV</button>
 
 
 <WeatherForecastApp.RazorComponents.ClimateDataTableComponent ClimateData="viewModel.ClimateData"></WeatherForecastApp.RazorComponents.ClimateDataTableComponent>

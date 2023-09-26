@@ -62,6 +62,7 @@ namespace WeatherForecastApp.Pages
 
         protected async Task DownloadFile()
         {
+            await ExportService.GenerateCsvContentAsync(viewModel.ClimateData);
             string filePath = "files/climate_data_last_30days.csv";
             string fileUrl = NavigationManager.ToAbsoluteUri(filePath).ToString();
             await JSRuntime.InvokeVoidAsync("downloadFile", fileUrl);
