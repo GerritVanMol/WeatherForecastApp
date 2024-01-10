@@ -1,0 +1,33 @@
+﻿@using WeatherForecastApp.Models
+
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Data point</th>
+            <th>Time</th>
+            <th>Temperature (2m height)</th>
+            <th>Relative Humidity (2m height)</th>
+            <th>Wind Speed (10m height)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ClimateData != null && ClimateData.Hourly != null)
+        {
+            @foreach (var index in Enumerable.Range(0, ClimateData.Hourly.Time.Length))
+            {
+                <tr class="table-info">
+                    <th scope="row">@index</th>
+                    <td>@DateTime.Parse(ClimateData.Hourly.Time[index]).ToString("dd-MM-yyyy hh:mm tt")</td>
+                    <td>@ClimateData.Hourly.TemperatureTwoM[index]</td>
+                    <td>@ClimateData.Hourly.RelativeHumidityTwoM[index]</td>
+                    <td>@ClimateData.Hourly.WindSpeedTenM[index]</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public ClimateDataPoints ClimateData { get; set; }
+}
